@@ -1,0 +1,12 @@
+const express=require('express')
+const connectdb = require('./connectdb')
+const routerr = require('./routes')
+const router = require('./router')
+require('dotenv').config()
+const app=express()
+const port=process.env.port
+app.use(express.json())
+connectdb()
+app.use('/',routerr)
+app.use('/product',router)
+app.listen(port,console.log("server is running at port: "+port))

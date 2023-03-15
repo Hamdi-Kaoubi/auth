@@ -1,0 +1,10 @@
+const express=require('express')
+const { isAuth } = require('./middleWare/isAuth')
+const { getProduct, postProduct, updateProduct, deleteProduct, myproducts } = require('./methods')
+const router=express.Router()
+router.get('/',getProduct)
+router.post('/post',isAuth,postProduct)
+router.put('/update/:id',updateProduct)
+router.delete('/del/:id',deleteProduct)
+router.get('/myproduct',isAuth,myproducts)
+module.exports=router
